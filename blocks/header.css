@@ -1,12 +1,26 @@
 .header {
   margin-top: 45px;
+  margin-right: 200px;
+  margin-left: 200px;
+  border-bottom: solid #545454 1px;
+  box-sizing: border-box;
 }
 
-/* .header__logo {
+.header__logo {
   margin-bottom: 41px;
   width: 173px;
   height: 33px;
 }
 
-.header__divider {
-} */
+@media screen and (max-width: 775px) {
+  .header {
+    padding-top: 28px;
+  }
+
+  .header__logo {
+    padding-left: 27px;
+    padding-bottom: 32px;
+    width: 126px;
+    height: 24px;
+  }
+}
