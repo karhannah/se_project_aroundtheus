@@ -1,0 +1,24 @@
+.gallery {
+  font-family: "Inter", Arial, san-serif;
+  margin-top: 51px;
+  margin: 0 auto;
+  max-width: 880px;
+  width: 100%;
+}
+
+/* center with grid properties */
+.gallery__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-gap: 20px 18px;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+}
+
+@media screen and (max-width: 775px) {
+  .gallery__cards {
+    margin-top: 36px;
+    padding: 15px 0 18px;
+  }
+}
