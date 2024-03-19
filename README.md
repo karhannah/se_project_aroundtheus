@@ -21,6 +21,7 @@ The way you'll do this at work is by exporting images directly from Figma — we
 Good luck and have fun!
 
 **Link to Video Overview**
+
 <!-- add video overview of design for interview preparation -->
 
 **GitHub**
