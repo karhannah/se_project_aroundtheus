@@ -6,12 +6,11 @@
   width: 100%;
 }
 
-/* center with grid properties */
 .gallery__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 18px;
-  margin: 0 auto;
+  grid-gap: 20px 17px;
+  margin: 0;
   padding: 0;
   justify-content: center;
 }

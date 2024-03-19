@@ -22,7 +22,7 @@ Good luck and have fun!
 
 **Link to Video Overview**
 
-<!-- add video overview of design for interview preparation -->
+- [Link to the project on Google Drive](https://drive.google.com/file/d/183Ek-0UBdNya5jVWDtetK45_8e6a9Tyl/view?usp=sharing)
 
 **GitHub**
 
