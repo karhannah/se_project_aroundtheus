@@ -8,6 +8,7 @@
 
 .card__image {
   object-fit: cover;
+  min-height: 282px;
 }
 
 .card__description {
