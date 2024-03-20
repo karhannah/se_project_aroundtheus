@@ -26,6 +26,6 @@ Good luck and have fun!
 
 **GitHub**
 
-- [Link to the project on GitHub](https://github.com/karhannah/se_project_aroundtheus)
+- [Link to the project on GitHub](https://github.com/karhannah/se_project_aroundtheus) -[Link to Github Pages](https://karhannah.github.io/se_project_aroundtheus/index.html)
 
 3/18/2024

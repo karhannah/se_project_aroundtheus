@@ -1,20 +1,20 @@
 .header {
   margin-top: 45px;
-  border-bottom: solid #545454 1px;
+  border-bottom: solid rgb(84 84 84/0.7) 1px;
   box-sizing: border-box;
   max-width: 880px;
   width: 100%;
 }
 
 .header__logo {
-  margin-bottom: 41px;
+  padding-bottom: 41px;
   width: 173px;
   height: 33px;
 }
 
 @media screen and (max-width: 775px) {
   .header {
-    padding-top: 28px;
+    margin-top: 28px;
   }
 
   .header__logo {
