@@ -10,7 +10,7 @@
   padding: 0 19px;
 }
 
-.modal__opened {
+.modal_opened {
   display: flex;
 }
 
@@ -76,7 +76,19 @@
   cursor: pointer;
 }
 
-/* @media screen and (max-width: 775px) {
-   {
+@media screen and (max-width: 775px) {
+  .modal__container {
+    width: 215px;
+    height: 260px;
   }
-} */
+  .modal__input {
+    width: 215px;
+  }
+  .modal__close {
+    position: absolute;
+    right: 10px;
+    top: -60px;
+    width: 26px;
+    height: 26px;
+  }
+}
