@@ -1,4 +1,4 @@
-**FOR REVIEWER: Sprint 4's design specifications on Figma do not require a trashcan icon, or other things mentioned. Please check again, or send me an image of the correct design**
+**FOR REVIEWER: The modal for editing the profile does open, I am unsure of what this comment is referring to. The modal should be working properly**
 
 .modal {
   position: fixed;
@@ -92,5 +92,8 @@
     top: -60px;
     width: 26px;
     height: 26px;
+  }
+    .modal__heading {
+    font-size: 18px;
   }
 }
