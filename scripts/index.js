@@ -142,7 +142,7 @@ profileAddModalClose.addEventListener("click", () =>
 
 closeImageModal.addEventListener("click", () => closePopup(previewImageModal));
 
-profileEditForm.addEventListener("submit", () => handleProfileEditSubmit);
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 addNewCardButton.addEventListener("click", () => openPopup(profileAddModal));
 
