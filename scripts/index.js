@@ -55,26 +55,12 @@ const closeImageModal = previewImageModal.querySelector(".modal__close");
 
 // Functions
 function openPopup(popupElement) {
-  console.log("Opening popup:", popupElement);
   popupElement.classList.add("modal_opened");
-  setTimeout(() => {
-    popupElement.querySelector(".modal__image").style.opacity = 1;
-  }, 10);
 }
 
 function closePopup(popupElement) {
-  console.log("Closing popup:", popupElement);
-  popupElement.querySelector(".modal__image").style.opacity = 0;
-  setTimeout(() => {
-    popupElement.classList.remove("modal_opened");
-  }, 500);
+  popupElement.classList.remove("modal_opened");
 }
-
-// function closePopup() {
-//   profileEditModal.classList.remove("modal_opened");
-//   profileAddModal.classList.remove("modal_opened");
-//   previewImageModal.classList.remove("modal_opened");
-// }
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
