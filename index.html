@@ -58,32 +58,33 @@
         <p class="footer__copyright">©2024 Around The U.S.</p>
       </footer>
     </div>
-    <div class="modal" id="profileEditModal">
-      <div class="modal__container">
-        <button
-          class="modal__close"
-          id="profile__edit-modal-close"
-          type="button"
-          aria-label
-        ></button>
-        <p class="modal__heading">Edit Profile</p>
-        <form class="profile__edit-form">
-          <input
-            class="modal__input"
-            type="text"
-            name="title"
-            id="modal__title"
-            placeholder="Enter profile name..."
-          />
-          <input
-            class="modal__input"
-            type="text"
-            name="description"
-            id="modal__description"
-            placeholder="Enter profile heading..."
-          />
-          <button class="modal__button">Save</button>
-        </form>
+      <div class="modal" id="profileEditModal">
+        <div class="modal__container">
+          <button
+            class="modal__close"
+            id="profile__edit-modal-close"
+            type="button"
+            aria-label
+          ></button>
+          <p class="modal__heading">Edit Profile</p>
+          <form class="profile__edit-form">
+            <input
+              class="modal__input"
+              type="text"
+              name="title"
+              id="modal__title"
+              placeholder="Enter profile name..."
+            />
+            <input
+              class="modal__input"
+              type="text"
+              name="description"
+              id="modal__description"
+              placeholder="Enter profile heading..."
+            />
+            <button class="modal__button">Save</button>
+          </form>
+        </div>
       </div>
     </div>
     <div class="modal" id="profileAddModal">
@@ -125,7 +126,6 @@
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption" id="modal__caption"></p>
       </div>
-    </div>
 
     <template id="card-template">
       <li class="card">

@@ -1,3 +1,4 @@
+// COMMENT FOR REVIEWER ON LINE 135
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -132,6 +133,7 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 addNewCardButton.addEventListener("click", () => openPopup(profileAddModal));
 
+// NEED CLARIFICATION ON ISSUE
 profileAddModal.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach((cardData) => {
