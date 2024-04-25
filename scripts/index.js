@@ -40,7 +40,7 @@ const profileEditModal = document.querySelector("#profileEditModal");
 const profileEditModalClose = document.querySelector(
   "#profile__edit-modal-close"
 );
-const profileAddForm = document.querySelector("#profile__add-form");
+const profileAddForm = document.querySelector(".profile__add-form");
 const profileAddModal = document.querySelector("#profileAddModal");
 const profileAddModalClose = document.querySelector(
   "#profile__add-modal-close"
@@ -132,7 +132,6 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 addNewCardButton.addEventListener("click", () => openPopup(profileAddModal));
 
-// NEED CLARIFICATION ON ISSUE
 profileAddModal.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach((cardData) => {
