@@ -38,6 +38,7 @@
 
 .modal__container-image {
   background-color: transparent;
+  padding: 0;
 }
 
 .modal__content_type_preview {
@@ -155,6 +156,12 @@
 @media screen and (max-width: 775px) {
   .modal__container {
     top: -125px;
+    padding: 0;
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  .modal__container-image {
+    padding: 0;
   }
   .modal__image {
     width: 240px;
@@ -167,7 +174,7 @@
   .modal__close {
     position: absolute;
     right: 10px;
-    top: -30px;
+    top: -40px;
     width: 26px;
     height: 26px;
   }

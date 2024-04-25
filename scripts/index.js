@@ -1,4 +1,3 @@
-// COMMENT FOR REVIEWER ON LINE 135
 const initialCards = [
   {
     name: "Yosemite Valley",
