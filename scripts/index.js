@@ -132,7 +132,7 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 addNewCardButton.addEventListener("click", () => openPopup(profileAddModal));
 
-profileAddModal.addEventListener("submit", handleAddCardSubmit);
+profileAddForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);

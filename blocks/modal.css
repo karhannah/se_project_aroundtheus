@@ -157,8 +157,9 @@
   .modal__container {
     top: -125px;
     padding: 0;
-    padding-right: 22px;
-    padding-left: 22px;
+    /* These are not the dimensions in the figma design, but it should look like you said now. */
+    padding-right: 30px;
+    padding-left: 30px;
   }
   .modal__container-image {
     padding: 0;
