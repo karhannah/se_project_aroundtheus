@@ -68,25 +68,36 @@
           ></button>
           <p class="modal__heading">Edit Profile</p>
           <form class="profile__edit-form">
+            <label class="modal__error-wrapper">
             <input
               class="modal__input"
               type="text"
               name="title"
               id="modal__title"
               placeholder="Enter profile name..."
+              required
+              maxlength="40"
+              minlength="2"
             />
+            <span class="modal__error_visible" id="profile-title-error"></span>
+          </label>
+          <label class="modal__error-wrapper">
             <input
               class="modal__input"
               type="text"
               name="description"
               id="modal__description"
               placeholder="Enter profile heading..."
+              required
+              maxlength="200"
+              minlength="2"
             />
+            <span class="modal__error" id="profile-heading-error"></span>
+          </label>
             <button class="modal__button">Save</button>
           </form>
         </div>
       </div>
-    </div>
     <div class="modal" id="profileAddModal">
       <div class="modal__container">
         <button
@@ -97,20 +108,30 @@
         ></button>
         <p class="modal__heading">New Place</p>
         <form class="profile__add-form">
+          <label class="modal__error-wrapper">
           <input
             class="modal__input"
             type="text"
             name="title"
             id="modal__title"
             placeholder="Title"
+            required
+            maxlength="30"
+            minlength="1"
           />
+          <span class="modal__error" id="card-title-error"></span>
+        </label>
+        <label class="modal__error-wrapper">
           <input
             class="modal__input"
-            type="text"
+            type="url"
+            required
             name="description"
             id="modal__description"
             placeholder="Image URL"
           />
+          <span class="modal__error" id="card-link-error"></span>
+          </label>
           <button class="modal__button">Create</button>
         </form>
       </div>
@@ -141,5 +162,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
