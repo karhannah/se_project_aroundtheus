@@ -62,6 +62,14 @@ function closePopup(popupElement) {
   popupElement.classList.remove("modal_opened");
 }
 
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closePopup(profileEditModal);
+    closePopup(profileAddModal);
+    closePopup(previewImageModal);
+  }
+});
+
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");

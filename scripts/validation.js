@@ -7,9 +7,14 @@ function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 
 function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  inputEl.classList.remove(inputErrorClass);
-  errorMessageEl.textContent = "";
-  errorMessageEl.classList.remove(errorClass);
+  console.log("errorMessageEl:", errorMessageEl); // Add this line for logging
+  if (errorMessageEl) {
+    inputEl.classList.remove(inputErrorClass);
+    errorMessageEl.textContent = "";
+    errorMessageEl.classList.remove(errorClass);
+  } else {
+    console.error("Error: errorMessageEl is null or undefined.");
+  }
 }
 
 function enableValidation(options) {
@@ -67,9 +72,9 @@ function setEventListeners(formEl, options) {
 }
 
 const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
+  formSelector: ".profile__edit-form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
