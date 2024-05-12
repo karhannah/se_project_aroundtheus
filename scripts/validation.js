@@ -71,8 +71,7 @@ function setEventListeners(formEl, options) {
 }
 
 const config = {
-  editFormSelector: ".profile__edit-form",
-  addFormSelector: ".profile__add-form",
+  formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "popup__button_disabled",
