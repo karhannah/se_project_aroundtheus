@@ -7,8 +7,9 @@ function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 
 function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
-  console.log("errorMessageEl:", errorMessageEl); // Add this line for logging
+  console.log("errorMessageEl:", errorMessageEl);
   if (errorMessageEl) {
+    console.log(`#${inputEl.id}-error`);
     inputEl.classList.remove(inputErrorClass);
     errorMessageEl.textContent = "";
     errorMessageEl.classList.remove(errorClass);
@@ -50,8 +51,8 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputElement) => inputElement.validity.valid);
 }
 
-function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
-  if (hasInvalidInput(inputEls)) {
+function toggleButtonState(inputEl, submitButton, { inactiveButtonClass }) {
+  if (hasInvalidInput(inputEl)) {
     disableButton(submitButton, inactiveButtonClass);
   } else {
     enableButton(submitButton, inactiveButtonClass);
@@ -60,13 +61,13 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
 
 function setEventListeners(formEl, options) {
   const { inputSelector, submitButtonSelector } = options;
-  const inputEls = [...formEl.querySelectorAll(inputSelector)];
+  const inputEl = [...formEl.querySelectorAll(inputSelector)];
   const submitButton = formEl.querySelector(submitButtonSelector);
 
-  inputEls.forEach((inputEl) => {
+  inputEl.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
       checkInputValidity(formEl, inputEl, options);
-      toggleButtonState(inputEls, submitButton, options);
+      toggleButtonState(inputEl, submitButton, options);
     });
   });
 }
