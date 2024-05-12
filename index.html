@@ -67,7 +67,7 @@
             aria-label
           ></button>
           <p class="modal__heading">Edit Profile</p>
-          <form class="profile__edit-form">
+          <form class="modal__form" id="profile-form">
             <label class="modal__error-wrapper">
             <input
               class="modal__input"
@@ -107,7 +107,7 @@
             aria-label
           ></button>
           <p class="modal__heading">New Place</p>
-          <form class="profile__add-form">
+          <form class="modal__form" id="add-form">
             <label class="modal__error-wrapper">
               <input
                 class="modal__input"
@@ -127,7 +127,7 @@
                 type="url"
                 required
                 name="description"
-                id="modal__new-description" <!-- Updated ID -->
+                id="modal__new-description"
                 placeholder="Image URL"
               />
               <span class="modal__error_visible" id="modal__new-description-error"></span>
