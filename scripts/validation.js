@@ -46,7 +46,7 @@ function enableButton(submitButton, inactiveButtonClass) {
 }
 
 function hasInvalidInput(inputList) {
-  return !inputList.every((inputList) => inputList.validity.valid);
+  return !inputList.every((input) => input.validity.valid);
 }
 
 function toggleButtonState(inputLists, submitButton, { inactiveButtonClass }) {
@@ -71,7 +71,8 @@ function setEventListeners(formEl, options) {
 }
 
 const config = {
-  formSelector: ".profile__edit-form",
+  editFormSelector: ".profile__edit-form",
+  addFormSelector: ".profile__add-form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "popup__button_disabled",

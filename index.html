@@ -92,50 +92,50 @@
               maxlength="200"
               minlength="2"
             />
-            <span class="modal__error" id="profile__heading"></span>
+            <span class="modal__error_visible" id="modal__description-error"></span>
           </label>
             <button class="modal__button">Save</button>
           </form>
         </div>
       </div>
-    <div class="modal" id="profileAddModal">
-      <div class="modal__container">
-        <button
-          class="modal__close"
-          id="profile__add-modal-close"
-          type="button"
-          aria-label
-        ></button>
-        <p class="modal__heading">New Place</p>
-        <form class="profile__add-form">
-          <label class="modal__error-wrapper">
-          <input
-            class="modal__input"
-            type="text"
-            name="title"
-            id="modal__title"
-            placeholder="Title"
-            required
-            maxlength="30"
-            minlength="1"
-          />
-          <span class="modal__error" id="card__title"></span>
-        </label>
-        <label class="modal__error-wrapper">
-          <input
-            class="modal__input"
-            type="url"
-            required
-            name="description"
-            id="modal__description"
-            placeholder="Image URL"
-          />
-          <span class="modal__error" id="card__link"></span>
-          </label>
-          <button class="modal__button">Create</button>
-        </form>
+      <div class="modal" id="profileAddModal">
+        <div class="modal__container">
+          <button
+            class="modal__close"
+            id="profile__add-modal-close"
+            type="button"
+            aria-label
+          ></button>
+          <p class="modal__heading">New Place</p>
+          <form class="profile__add-form">
+            <label class="modal__error-wrapper">
+              <input
+                class="modal__input"
+                type="text"
+                name="title"
+                id="modal__new-title" <!-- Updated ID -->
+                placeholder="Title"
+                required
+                maxlength="30"
+                minlength="1"
+              />
+              <span class="modal__error_visible" id="modal__new-title-error"></span> <!-- Updated ID -->
+            </label>
+            <label class="modal__error-wrapper">
+              <input
+                class="modal__input"
+                type="url"
+                required
+                name="description"
+                id="modal__new-description" <!-- Updated ID -->
+                placeholder="Image URL"
+              />
+              <span class="modal__error_visible" id="modal__new-description-error"></span> <!-- Updated ID -->
+            </label>
+            <button class="modal__button">Create</button>
+          </form>
+        </div>
       </div>
-    </div>
     <div class="modal" id="previewImageModal">
       <div class="modal__container modal__container-image">
         <button
