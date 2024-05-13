@@ -59,8 +59,10 @@ function openPopup(modal) {
   errorInputs.forEach((input) => {
     input.classList.remove("modal__input_type_error");
     const errorMessage = modal.querySelector(`#${input.id}-error`);
-    errorMessage.textContent = "";
-    errorMessage.classList.remove("modal__error_visible");
+    if (errorMessage) {
+      errorMessage.textContent = "";
+      errorMessage.classList.remove("modal__error_visible");
+    }
   });
 
   modal.classList.add("modal_opened");
@@ -80,6 +82,11 @@ function closePopup(modal) {
     errorMessage.textContent = "";
     errorMessage.classList.remove("modal__error_visible");
   });
+
+  const form = modal.querySelector("form");
+  if (form) {
+    form.reset();
+  }
 }
 
 function closeModalEscape(event) {
