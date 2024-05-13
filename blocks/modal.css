@@ -116,6 +116,10 @@
   cursor: pointer;
 }
 
+.popup__button_disabled {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
 .modal__container_image-preview {
   margin-bottom: 20px;
   display: flex;

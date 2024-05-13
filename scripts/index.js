@@ -46,20 +46,54 @@ const profileAddModalClose = document.querySelector(
   "#profile__add-modal-close"
 );
 const profileEditForm = document.querySelector("#add-form");
-const cardTitleInput = profileAddModal.querySelector("#modal__title");
-const cardImageInput = profileAddModal.querySelector("#modal__description");
+const cardTitleInput = profileAddModal.querySelector("#modal__new-title");
+const cardImageInput = profileAddModal.querySelector("#modal__new-description");
 const previewImageModal = document.querySelector("#previewImageModal");
 const previewImageImageEl = previewImageModal.querySelector(".modal__image");
 const previewImageTextEl = previewImageModal.querySelector(".modal__caption");
 const closeImageModal = previewImageModal.querySelector(".modal__close");
 
 // Functions
-function openPopup(popupElement) {
-  popupElement.classList.add("modal_opened");
+function openPopup(modal) {
+  const errorInputs = modal.querySelectorAll(".modal__input_type_error");
+  errorInputs.forEach((input) => {
+    input.classList.remove("modal__input_type_error");
+    const errorMessage = modal.querySelector(`#${input.id}-error`);
+    errorMessage.textContent = "";
+    errorMessage.classList.remove("modal__error_visible");
+  });
+
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalEscape);
+  modal.addEventListener("mousedown", closeModalOverlay);
 }
 
-function closePopup(popupElement) {
-  popupElement.classList.remove("modal_opened");
+function closePopup(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalEscape);
+  modal.removeEventListener("mousedown", closeModalOverlay);
+
+  const errorInputs = modal.querySelectorAll(".modal__input_type_error");
+  errorInputs.forEach((input) => {
+    input.classList.remove("modal__input_type_error");
+    const errorMessage = modal.querySelector(`#${input.id}-error`);
+    errorMessage.textContent = "";
+    errorMessage.classList.remove("modal__error_visible");
+  });
+}
+
+function closeModalEscape(event) {
+  if (event.key === "Escape") {
+    closePopup(profileEditModal);
+    closePopup(profileAddModal);
+    closePopup(previewImageModal);
+  }
+}
+
+function closeModalOverlay(event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.currentTarget);
+  }
 }
 
 document.addEventListener("keydown", function (event) {

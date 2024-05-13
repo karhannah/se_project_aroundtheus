@@ -12,7 +12,7 @@ function hideInputError(formEl, inputList, { inputErrorClass, errorClass }) {
     errorMessageEl.textContent = "";
     errorMessageEl.classList.remove(errorClass);
   } else {
-    console.error("Error: errorMessageEl is null or undefined.");
+    console.warn("Warning: errorMessageEl is null or undefined.");
   }
 }
 
