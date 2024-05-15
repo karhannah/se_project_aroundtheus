@@ -63,14 +63,14 @@ function openPopup(modal) {
     }
   });
   modal.classList.add("modal_opened");
-  modal.addEventListener("keydown", closeModalEscape);
-  modal.addEventListener("mousedown", closeModalOverlay);
+  document.addEventListener("keydown", closeModalEscape);
+  document.addEventListener("mousedown", closeModalOverlay);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEscape);
-  modal.removeEventListener("mousedown", closeModalOverlay);
+  document.removeEventListener("mousedown", closeModalOverlay);
 
   const form = modal.querySelector("form");
   if (form) {
