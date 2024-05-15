@@ -4,16 +4,11 @@ function showInputError(formEl, inputList, { inputErrorClass, errorClass }) {
   errorMessageEl.textContent = inputList.validationMessage;
   errorMessageEl.classList.add(errorClass);
 }
-
-function hideInputError(formEl, inputList, { inputErrorClass, errorClass }) {
-  const errorMessageEl = formEl.querySelector(`#${inputList.id}-error`);
-  if (errorMessageEl) {
-    inputList.classList.remove(inputErrorClass);
-    errorMessageEl.textContent = "";
-    errorMessageEl.classList.remove(errorClass);
-  } else {
-    console.warn("Warning: errorMessageEl is null or undefined.");
-  }
+function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+  const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
+  inputEl.classList.remove(inputErrorClass);
+  errorMessageEl.textContent = "";
+  errorMessageEl.classList.remove(errorClass);
 }
 
 function enableValidation(options) {
@@ -22,17 +17,15 @@ function enableValidation(options) {
     formEl.addEventListener("submit", (e) => {
       e.preventDefault();
     });
-
     setEventListeners(formEl, options);
   });
 }
 
-function checkInputValidity(formEl, inputList, options) {
-  if (!inputList.validity.valid) {
-    showInputError(formEl, inputList, options);
-  } else {
-    hideInputError(formEl, inputList, options);
+function checkInputValidity(formEl, inputEl, config) {
+  if (!inputEl.validity.valid) {
+    return showInputError(formEl, inputEl, config);
   }
+  hideInputError(formEl, inputEl, config);
 }
 
 function disableButton(submitButton, inactiveButtonClass) {
