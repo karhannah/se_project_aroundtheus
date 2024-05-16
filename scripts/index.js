@@ -61,7 +61,7 @@ function openPopup(modal) {
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEscape);
-  document.removeEventListener("mousedown", closeModalOverlay);
+  modal.removeEventListener("mousedown", closeModalOverlay);
 
   const form = modal.querySelector("form");
   if (form) {
