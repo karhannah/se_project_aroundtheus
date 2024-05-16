@@ -53,24 +53,21 @@ const closeImageModal = previewImageModal.querySelector(".modal__close");
 
 // Functions
 function openPopup(modal) {
-  const errorInputs = modal.querySelectorAll(".modal__input_type_error");
-  errorInputs.forEach((input) => {
-    input.classList.remove("modal__input_type_error");
-    const errorMessage = modal.querySelector(`#${input.id}-error`);
-    if (errorMessage) {
-      errorMessage.textContent = "";
-      errorMessage.classList.remove("modal__error_visible");
-    }
-  });
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalEscape);
-  document.addEventListener("mousedown", closeModalOverlay);
+  modal.addEventListener("mousedown", closeModalOverlay);
+
+  const modalOverlay = modal.querySelector(".modal-overlay");
+  modalOverlay.addEventListener("click", closeModalOverlay);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEscape);
   document.removeEventListener("mousedown", closeModalOverlay);
+
+  const modalOverlay = modal.querySelector(".modal-overlay");
+  modalOverlay.removeEventListener("click", closeModalOverlay);
 
   const form = modal.querySelector("form");
   if (form) {
@@ -88,9 +85,8 @@ function closeModalEscape(event) {
 }
 
 function closeModalOverlay(event) {
-  const openModal = document.querySelector(".modal_opened");
-  if (event.target === openModal) {
-    closePopup(openModal);
+  if (event.target === event.currentTarget) {
+    closePopup(event.currentTarget);
   }
 }
 
@@ -122,7 +118,8 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function renderCard(cardElement, cardListEl) {
+function renderCard(cardData, cardListEl) {
+  const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 }
 
@@ -138,8 +135,7 @@ function handleAddCardSubmit(e) {
   e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardImageInput.value;
-  const cardElement = getCardElement({ name, link });
-  renderCard(cardElement, cardListEl);
+  renderCard({ name, link }, cardListEl);
   cardTitleInput.value = "";
   cardImageInput.value = "";
   closePopup(cardModal);
@@ -163,6 +159,5 @@ addNewCardButton.addEventListener("click", () => openPopup(cardModal));
 cardForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  renderCard(cardElement, cardListEl);
+  renderCard(cardData, cardListEl);
 });
