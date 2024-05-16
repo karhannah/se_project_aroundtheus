@@ -56,18 +56,12 @@ function openPopup(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalEscape);
   modal.addEventListener("mousedown", closeModalOverlay);
-
-  const modalOverlay = modal.querySelector(".modal-overlay");
-  modalOverlay.addEventListener("click", closeModalOverlay);
 }
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEscape);
   document.removeEventListener("mousedown", closeModalOverlay);
-
-  const modalOverlay = modal.querySelector(".modal-overlay");
-  modalOverlay.removeEventListener("click", closeModalOverlay);
 
   const form = modal.querySelector("form");
   if (form) {
