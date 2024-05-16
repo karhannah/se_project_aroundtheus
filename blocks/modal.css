@@ -74,19 +74,23 @@
 }
 
 .modal__error-wrapper {
+  display: block;
   position: relative;
+  margin-bottom: 13px;
 }
 
 .modal__error {
-  position: absolute;
+  display: block;
+  margin-top: 5px; */
+  padding-top: 5px;
   bottom: 0;
   left: 0;
   font-family: Inter, Arial, Helvitica, sans-serif;
   font-size: 12px;
-  line-height: 1.2;
+  line-height: 14px;
   opacity: 0;
-  min-height: 30px;
-  max-width: 358px;
+  height: 17px;
+  width: 358px;
   color: red;
   visibility: hidden;
 }
@@ -95,6 +99,8 @@
   opacity: 1;
   visibility: visible;
   transition: visibility 0s, opacity 0.5s, linear;
+  height: 17px;
+  width: 358px;
 }
 
 .modal__input {
