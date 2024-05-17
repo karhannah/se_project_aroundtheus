@@ -62,11 +62,6 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEscape);
   modal.removeEventListener("mousedown", closeModalOverlay);
-
-  const form = modal.querySelector("form");
-  if (form) {
-    form.reset();
-  }
 }
 
 function closeModalEscape(event) {
@@ -132,6 +127,7 @@ function handleAddCardSubmit(e) {
   renderCard({ name, link }, cardListEl);
   cardTitleInput.value = "";
   cardImageInput.value = "";
+  e.target.reset();
   closePopup(cardModal);
 }
 
