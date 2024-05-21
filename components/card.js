@@ -1,14 +1,22 @@
-class Card {
-  constructor(data, cardSelector, handleImageClick) {
-    // assign each of the parameters to `this` as private fields
-    // ...
-    this._handeImageClick = handleImageClick;
+export default class Card {
+  constructor({ name, link }, cardSelector) {
+    this._name = name;
+    this._link = link;
+    this._cardSelector = cardSelector;
   }
 
   _setEventListeners() {
-    // ...
-    this._cardImageElement.addEventListener("click", () => {
-      this._handleImageClick(this);
-    });
+    //".card__like-button"
+    const likeButton = this._cardElement.querySelector(".card__like-button");
+    //".card__delete-button"
+    //".card__image"
+  }
+
+  getView() {
+    this._cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
+    this._setEventListeners();
   }
 }
