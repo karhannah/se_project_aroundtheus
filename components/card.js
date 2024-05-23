@@ -6,10 +6,31 @@ export default class Card {
   }
 
   _setEventListeners() {
-    //".card__like-button"
-    const likeButton = this._cardElement.querySelector(".card__like-button");
-    //".card__delete-button"
-    //".card__image"
+    this._cardElement
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => {
+        this.handleLikeIcon();
+      });
+    this._cardElement
+      .querySelector(".card__delete-button")
+      .addEventListener("click", () => {
+        this._handleDeleteCard();
+      });
+  }
+
+  _handleLikeIcon() {
+    this._cardElement
+      .querySelector(".card__like-button")
+      .classList.toggle(".card__like-button_is-active");
+  }
+
+  _handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
+  _handleCardPreview() {
+    this._cardElement.querySelector(".modal__image-preview");
   }
 
   getView() {
