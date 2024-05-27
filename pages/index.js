@@ -1,4 +1,5 @@
 import Card from "../components/card.js";
+import FormValidator from "../components/validation.js";
 
 const initialCards = [
   {
@@ -60,6 +61,20 @@ const previewImageModal = document.querySelector("#previewImageModal");
 const previewImageImageEl = previewImageModal.querySelector(".modal__image");
 const previewImageTextEl = previewImageModal.querySelector(".modal__caption");
 const closeImageModal = previewImageModal.querySelector(".modal__close");
+
+const settings = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit",
+  inactiveButtonClass: "form__submit_inactive",
+  inputErrorClass: "form__input_type_error",
+  errorClass: "form__input-error_active",
+};
+
+const addCardFormValidator = new FormValidator(settings, cardForm);
+addCardFormValidator.enableValidation();
+
+const profileFormValidator = new FormValidator(settings, profileModalForm);
+profileFormValidator.enableValidation();
 
 // Functions
 function openPopup(modal) {

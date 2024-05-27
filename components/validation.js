@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(config, formEl) {
     this._config = config;
     this._formEl = formEl;
@@ -52,7 +52,7 @@ class FormValidator {
     return inputList.some((inputEl) => !inputEl.validity.valid);
   }
 
-  _toggleButtonState() {
+  toggleButtonState() {
     if (this._hasInvalidInput(this._inputEls)) {
       this._disableButton();
     } else {
@@ -69,10 +69,8 @@ class FormValidator {
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", () => {
         this._checkInputValidity(inputEl);
-        this._toggleButtonState();
+        this.toggleButtonState();
       });
     });
   }
 }
-
-export default FormValidator;
