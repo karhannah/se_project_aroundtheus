@@ -100,38 +100,19 @@ function closeModalOverlay(event) {
   }
 }
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  cardImageEl.addEventListener("click", () => {
-    previewImageImageEl.src = cardData.link;
-    previewImageTextEl.textContent = cardData.name;
-    previewImageImageEl.alt = cardData.name;
-    openPopup(previewImageModal);
-  });
-
-  cardImageEl.src = cardData.link;
-  cardTitleEl.textContent = cardData.name;
-  cardImageEl.alt = cardData.name;
-
-  return cardElement;
+// Render card function using Card class
+function renderCard(cardData, cardListEl) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  const cardElement = card.getView();
+  cardListEl.prepend(cardElement);
 }
 
-function renderCard(cardData, cardListEl) {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
+// Image click handler
+function handleImageClick(cardInstance) {
+  previewImageImageEl.src = cardInstance._link;
+  previewImageTextEl.textContent = cardInstance._name;
+  previewImageImageEl.alt = cardInstance._name;
+  openPopup(previewImageModal);
 }
 
 // Handlers
