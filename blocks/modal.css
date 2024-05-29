@@ -227,4 +227,7 @@
     margin-bottom: 20px;
     margin-right: 20px;
   }
+  .modal__error_visible {
+    width: 250px;
+  }
 }
