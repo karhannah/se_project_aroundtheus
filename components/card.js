@@ -22,7 +22,7 @@ export default class Card {
       this._handleDeleteCard();
     });
     this._cardImageElement.addEventListener("click", () => {
-      this._handleImageClick(this);
+      this._handleImageClick(this._name, this._link);
     });
   }
 
@@ -33,13 +33,6 @@ export default class Card {
   _handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
-  }
-
-  _handleCardPreview() {
-    previewImageImageEl.src = this._link;
-    previewImageTextEl.textContent = this._name;
-    previewImageImageEl.alt = this._name;
-    openPopup(previewImageModal);
   }
 
   getView() {

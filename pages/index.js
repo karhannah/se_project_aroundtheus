@@ -1,5 +1,5 @@
-import Card from "../components/card.js";
-import FormValidator from "../components/validation.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 // Initial cards data
 const initialCards = [
@@ -70,7 +70,6 @@ addCardFormValidator.enableValidation();
 
 const profileFormValidator = new FormValidator(settings, profileModalForm);
 profileFormValidator.enableValidation();
-console.log(profileFormValidator._inputList);
 
 // Functions
 function openPopup(modal) {
@@ -100,9 +99,13 @@ function closeModalOverlay(event) {
   }
 }
 
+function addCard(cardData) {
+  return new Card(cardData, "#card-template", handleImageClick);
+}
+
 // Render card function using Card class
 function renderCard(cardData, cardListEl) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = addCard(cardData);
   const cardElement = card.getView();
   cardListEl.prepend(cardElement);
 }
@@ -128,8 +131,6 @@ function handleAddCardSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardImageInput.value;
   renderCard({ name, link }, cardListEl);
-  cardTitleInput.value = "";
-  cardImageInput.value = "";
   e.target.reset();
   closePopup(cardModal);
 }
@@ -139,6 +140,7 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
   openPopup(profileEditModal);
+  profileFormValidator._resetValidation();
 });
 
 profileEditModalClose.addEventListener("click", () =>
