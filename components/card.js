@@ -1,3 +1,7 @@
+// The button is disabled unless the requirements are met for the submission
+//  at least that is what it shows on my browser
+//  and you can't add an empty card under any circumstances
+
 export default class Card {
   constructor({ name, link }, cardSelector, handleImageClick) {
     this._name = name;
@@ -22,7 +26,7 @@ export default class Card {
       this._handleDeleteCard();
     });
     this._cardImageElement.addEventListener("click", () => {
-      this._handleImageClick(this._name, this._link);
+      this._handleImageClick(this);
     });
   }
 
