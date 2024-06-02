@@ -132,6 +132,7 @@ function handleAddCardSubmit(e) {
   const link = cardImageInput.value;
   renderCard({ name, link }, cardListEl);
   e.target.reset();
+  addCardFormValidator._resetValidation();
   closePopup(cardModal);
 }
 
