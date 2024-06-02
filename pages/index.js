@@ -100,13 +100,13 @@ function closeModalOverlay(event) {
 }
 
 function addCard(cardData) {
-  return new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(cardData, "#card-template", handleImageClick);
+  return card.getView();
 }
 
 // Render card function using Card class
 function renderCard(cardData, cardListEl) {
-  const card = addCard(cardData);
-  const cardElement = card.getView();
+  const cardElement = addCard(cardData);
   cardListEl.prepend(cardElement);
 }
 
@@ -154,6 +154,4 @@ addNewCardButton.addEventListener("click", () => openPopup(cardModal));
 cardForm.addEventListener("submit", handleAddCardSubmit);
 
 // Render initial cards
-initialCards.forEach((cardData) => {
-  renderCard(cardData, cardListEl);
-});
+initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
