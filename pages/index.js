@@ -112,9 +112,9 @@ function renderCard(cardData, cardListEl) {
 
 // Image click handler
 function handleImageClick(cardInstance) {
-  previewImageImageEl.src = cardInstance._link;
-  previewImageTextEl.textContent = cardInstance._name;
-  previewImageImageEl.alt = cardInstance._name;
+  previewImageImageEl.src = cardInstance.link;
+  previewImageTextEl.textContent = cardInstance.name;
+  previewImageImageEl.alt = cardInstance.name;
   openPopup(previewImageModal);
 }
 
