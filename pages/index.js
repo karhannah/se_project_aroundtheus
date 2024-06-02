@@ -132,7 +132,7 @@ function handleAddCardSubmit(e) {
   const link = cardImageInput.value;
   renderCard({ name, link }, cardListEl);
   e.target.reset();
-  addCardFormValidator._resetValidation();
+  addCardFormValidator.resetValidation();
   closePopup(cardModal);
 }
 
@@ -141,7 +141,7 @@ profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent.trim();
   openPopup(profileEditModal);
-  profileFormValidator._resetValidation();
+  profileFormValidator.resetValidation();
 });
 
 profileEditModalClose.addEventListener("click", () =>

@@ -6,7 +6,7 @@ export default class Card {
     this._handleImageClick = handleImageClick;
   }
 
-  _getTemplate() {
+  getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
@@ -36,7 +36,7 @@ export default class Card {
   }
 
   getView() {
-    this._cardElement = this._getTemplate();
+    this._cardElement = this.getTemplate();
     this._cardImageElement = this._cardElement.querySelector(".card__image");
     this._cardTitleElement = this._cardElement.querySelector(".card__title");
     this._deleteButton = this._cardElement.querySelector(
