@@ -1,48 +1,41 @@
 export default class Popup {
-    constructor({popupSelector}) {
+    constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
+        console.log (this._popupElement);
     }
     open() {
-
+        this._popupElement.classList.add("modal_opened");
+        document.addEventListener("keydown", this._handleEscClose);
+        this._popupElement.addEventListener("mousedown", this._handleModalClose);
     }
 
     close() {
-
+        this._popupElement.classList.remove("modal_opened");
+        document.removeEventListener("keydown", this._handleEscClose);
+        this._popupElement.removeEventListener("mousedown", this._handleModalClose);
     }
 
-    _handleEscClose() {
-
+    _handleEscClose(event) {
+        if (event.key === "Escape") {
+            
+            if (this._popupElement) {
+            this.close();
+            }
+        }
     }
 
-    setEventListeners() {
-
+    _handleModalClose(event) {
+        if (event.target === event.currentTarget) {
+             this.close();
+            }
     }
+
+    get modal() {
+        return this._popupElement;
+    }
+
+//     setEventListeners() {
+
+//     }
 
 }
-
-// export function openPopup(modal) {
-//     modal.classList.add("modal_opened");
-//     document.addEventListener("keydown", closeModalEscape);
-//     modal.addEventListener("mousedown", closeModalOverlay);
-//   }
-  
-//   export function closePopup(modal) {
-//     modal.classList.remove("modal_opened");
-//     document.removeEventListener("keydown", closeModalEscape);
-//     modal.removeEventListener("mousedown", closeModalOverlay);
-//   }
-  
-//   export function closeModalEscape(event) {
-//     if (event.key === "Escape") {
-//       const openModal = document.querySelector(".modal_opened");
-//       if (openModal) {
-//         closePopup(openModal);
-//       }
-//     }
-//   }
-  
-//   export function closeModalOverlay(event) {
-//     if (event.target === event.currentTarget) {
-//       closePopup(event.currentTarget);
-//     }
-//   }
