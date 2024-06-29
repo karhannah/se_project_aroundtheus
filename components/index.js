@@ -125,9 +125,9 @@ profileEditButton.addEventListener("click", () => {
   profileFormValidator.resetValidation();
 });
 
-profileEditModalClose.addEventListener("click", () =>
+profileEditModalClose.addEventListener("click", () => {
   closePopup(profileEditModal)
-);
+});
 cardModalClose.addEventListener("click", () => cardAddModal.close());
 closeImageModal.addEventListener("click", () => closePopup(previewImageModal));
 
