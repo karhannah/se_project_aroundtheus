@@ -19,23 +19,23 @@ export default class Popup {
         if (event.key === "Escape") {
             
             if (this._popupElement) {
-            this.close();
+                this.close();
             }
         }
     }
 
     _handleModalClose(event) {
         if (event.target === event.currentTarget) {
-             this.close();
-            }
+            this.close();
+        }
     }
 
     get modal() {
         return this._popupElement;
     }
 
-//     setEventListeners() {
+    setEventListeners() {
 
-//     }
+    }
 
 }
