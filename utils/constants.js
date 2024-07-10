@@ -1,8 +1,8 @@
-import Popup from "./popup.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
+import Popup from "../src/components/Popup.js";
+import PopupWithForm from "../src/components/PopupWithForm.js";
+import PopupWithImage from "../src/components/PopupWithImage.js";
+import Section from "../src/components/Section.js";
+import UserInfo from "../src/components/UserInfo.js";
 
 // Initial cards data
 export const initialCards = [
@@ -31,10 +31,10 @@ export const initialCards = [
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
     },
   ];
-  
+
   // Elements
-  
-  
+
+
   // Form settings
   export const settings = {
     inputSelector: ".modal__input",

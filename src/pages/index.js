@@ -1,12 +1,12 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import "../src/pages/index.css";
-import Popup from "./popup.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import Section from "./Section.js";
-import UserInfo from "./UserInfo.js";
-import * as constants from "./constants.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import "../pages/index.css";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import * as constants from "../../utils/constants.js";
 
 const section = new Section ({items:constants.initialCards, renderer: addCard}, ".gallery__cards");
 const cardTemplate = document
@@ -23,7 +23,6 @@ const cardTemplate = document
   const profileEditModal = document.querySelector("#profileEditModal");
   const profileEditModalClose = document.querySelector("#profile__edit-modal-close");
   const profileModalForm = document.querySelector("#profile-form");
-
   const cardModalClose = document.querySelector("#profile__add-modal-close");
   const cardForm = document.querySelector("#add-form");
 const profileFormModal = new PopupWithForm({popupSelector:"#profileEditModal", handleFormSubmit:handleProfileEditSubmit});
@@ -52,29 +51,27 @@ function addCard(cardData) {
 // Render card function using Card class
 function renderCard(cardData, cardListEl) {
   const cardElement = addCard(cardData);
-  cardListEl.prepend(cardElement);
+  section.addItem(cardElement);
 }
 
 // Image click handler
 function handleImageClick(cardInstance) {
-  previewImageImageEl.alt = cardInstance.name;
   previewImagePopup.open(cardInstance.link, cardInstance.name);
 }
 
-// 
+//
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  profileInfo.setUserInfo({name:profileTitleInput.value, job:profileDescriptionInput.value});
-  profileTitle.textContent = profileInfo.getUserInfo().name;
-  profileDescription.textContent = profileInfo.getUserInfo().job;
+  // profileInfo.setUserInfo(profileFormModal.getInputs());
+  let inputs = profileFormModal.getInputs();
+  profileInfo.setUserInfo({name:inputs[0], job:inputs [1]});
   profileFormModal.close();
 }
 
 function handleAddCardSubmit(e) {
   e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardImageInput.value;
-  renderCard({ name, link }, cardListEl);
+  let inputs = cardAddModal.getInputs();
+  renderCard({ name: inputs[0], link: inputs[1] });
   e.target.reset();
   addCardFormValidator.resetValidation();
   cardAddModal.close();

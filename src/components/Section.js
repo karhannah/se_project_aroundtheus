@@ -4,8 +4,6 @@ constructor({items, renderer},classSelector) {
     this._items = items;
     this._renderer = renderer;
     this._container = document.querySelector(classSelector);
-    console.log(classSelector);
-    console.log(this._container);
 }
 
 renderItems() {
@@ -13,12 +11,10 @@ renderItems() {
       this.addItem(item);
     });
   }
-  
+
   addItem(item) {
     const newCard = this._renderer(item);
-    console.log(this._container);
     this._container.prepend(newCard);
   }
 }
 
-  
