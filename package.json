@@ -30,5 +30,9 @@
   },
   "dependencies": {
     "core-js": "3.23.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karhannah/se_project_aroundtheus.git"
+}
 }
