@@ -20,21 +20,15 @@ const cardTemplate = document
   const profileTitleInput = document.querySelector("#modal__title");
   const profileDescriptionInput = document.querySelector("#modal__description");
   const profileEditButton = document.querySelector("#profile__edit-button");
-  const profileModalForm = document.querySelector("#profile-form"); 
+  const profileModalForm = document.querySelector("#profile-form");
   const cardForm = document.querySelector("#add-form");
 const profileFormModal = new PopupWithForm({popupSelector:"#profileEditModal", handleFormSubmit:handleProfileEditSubmit});
 const cardAddModal = new PopupWithForm ({popupSelector:"#cardModal", handleFormSubmit:handleAddCardSubmit});
 const previewImagePopup = new PopupWithImage("#previewImageModal");
-const cardTitleInput = cardAddModal.modal.querySelector("#modal__new-title");
-const cardImageInput = cardAddModal.modal.querySelector("#modal__new-description");
-const previewImageImageEl = previewImagePopup.modal.querySelector(".modal__image");
-const closeImageModal = previewImagePopup.modal.querySelector(".modal__close");
 const addCardFormValidator = new FormValidator(constants.settings, cardForm);
 const profileFormValidator = new FormValidator(constants.settings, profileModalForm);
 
 // Enable form validation
-
-section.renderItems();
 
 addCardFormValidator.enableValidation();
 
@@ -59,7 +53,6 @@ function handleImageClick(cardInstance) {
 //
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  // profileInfo.setUserInfo(profileFormModal.getInputs());
   let inputs = profileFormModal.getInputs();
   profileInfo.setUserInfo({name:inputs[0], job:inputs [1]});
   profileFormModal.close();
@@ -82,8 +75,6 @@ profileEditButton.addEventListener("click", () => {
   profileFormValidator.resetValidation();
 });
 
-//profileModalForm.addEventListener("submit", handleProfileEditSubmit);
 addNewCardButton.addEventListener("click", () => cardAddModal.open());
-// cardForm.addEventListener("submit", handleAddCardSubmit);
 
 

@@ -3,7 +3,7 @@ export default class Popup {
       this._popupElement = document.querySelector(popupSelector);
       this._handleEscClose = this._handleEscClose.bind(this);
       this._handleModalClose = this._handleModalClose.bind(this);
-      this.setEventListeners();
+      this._popupElement.querySelector(".modal__close").addEventListener("click", () => this.close());
   }
 
   open() {
@@ -31,6 +31,5 @@ export default class Popup {
   }
 
   setEventListeners() {
-      this._popupElement.querySelector(".modal__close").addEventListener("click", () => this.close());
   }
 }
