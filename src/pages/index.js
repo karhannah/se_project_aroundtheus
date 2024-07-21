@@ -6,7 +6,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import * as constants from "../../utils/constants.js";
+import * as constants from "../utils/constants.js";
 
 const section = new Section ({items:constants.initialCards, renderer: addCard}, ".gallery__cards");
 const cardTemplate = document
@@ -41,8 +41,7 @@ function addCard(cardData) {
 
 // Render card function using Card class
 function renderCard(cardData, cardListEl) {
-  const cardElement = addCard(cardData);
-  section.addItem(cardElement);
+  section.addItem(cardData);
 }
 
 // Image click handler

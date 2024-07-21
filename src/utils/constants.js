@@ -1,9 +1,3 @@
-import Popup from "../src/components/Popup.js";
-import PopupWithForm from "../src/components/PopupWithForm.js";
-import PopupWithImage from "../src/components/PopupWithImage.js";
-import Section from "../src/components/Section.js";
-import UserInfo from "../src/components/UserInfo.js";
-
 // Initial cards data
 export const initialCards = [
     {
