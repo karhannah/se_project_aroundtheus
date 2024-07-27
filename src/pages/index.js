@@ -12,7 +12,9 @@ const section = new Section ({items:constants.initialCards, renderer: addCard}, 
 const cardTemplate = document
     .querySelector("#card-template")
     .content.querySelector(".card");
-  const profileInfo = new UserInfo("Jacques Cousteau", "Explorer");
+
+  const profileInfo = new UserInfo({nameSelector: "#profile__title", jobSelector: "#profile__description"});
+
   const cardListEl = document.querySelector(".gallery__cards");
   const addNewCardButton = document.querySelector("#profile__add-button");
   const profileTitle = document.querySelector("#profile__title");
@@ -22,9 +24,16 @@ const cardTemplate = document
   const profileEditButton = document.querySelector("#profile__edit-button");
   const profileModalForm = document.querySelector("#profile-form");
   const cardForm = document.querySelector("#add-form");
+
 const profileFormModal = new PopupWithForm({popupSelector:"#profileEditModal", handleFormSubmit:handleProfileEditSubmit});
+profileFormModal.setEventListeners();
+
 const cardAddModal = new PopupWithForm ({popupSelector:"#cardModal", handleFormSubmit:handleAddCardSubmit});
+cardAddModal.setEventListeners();
+
 const previewImagePopup = new PopupWithImage("#previewImageModal");
+previewImagePopup.setEventListeners();
+
 const addCardFormValidator = new FormValidator(constants.settings, cardForm);
 const profileFormValidator = new FormValidator(constants.settings, profileModalForm);
 
@@ -52,7 +61,7 @@ function handleImageClick(cardInstance) {
 //
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  let inputs = profileFormModal.getInputs();
+  let inputs = profileFormModal._getInputValues();
   profileInfo.setUserInfo({name:inputs[0], job:inputs [1]});
   profileFormModal.close();
 }
