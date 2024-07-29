@@ -59,26 +59,22 @@ function handleImageClick(cardInstance) {
 }
 
 //
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  let inputs = profileFormModal._getInputValues();
+function handleProfileEditSubmit(e, inputs) {
   profileInfo.setUserInfo({name:inputs[0], job:inputs [1]});
   profileFormModal.close();
 }
 
-function handleAddCardSubmit(e) {
-  e.preventDefault();
-  let inputs = cardAddModal.getInputs();
+function handleAddCardSubmit(e, inputs) {
   renderCard({ name: inputs[0], link: inputs[1] });
   e.target.reset();
-  addCardFormValidator.resetValidation();
+  addCardFormValidator.toggleButtonState();
   cardAddModal.close();
 }
 
 // Event Listeners
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent.trim();
+  profileTitleInput.value = profileInfo.getUserInfo().name;
+  profileDescriptionInput.value = profileInfo.getUserInfo().job.trim();
   profileFormModal.open();
   profileFormValidator.resetValidation();
 });
