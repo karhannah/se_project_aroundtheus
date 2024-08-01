@@ -60,12 +60,12 @@ function handleImageClick(cardInstance) {
 
 //
 function handleProfileEditSubmit(e, inputs) {
-  profileInfo.setUserInfo({name:inputs[0], job:inputs [1]});
+  profileInfo.setUserInfo({name:inputs["title"], job:inputs ["description"]});
   profileFormModal.close();
 }
 
 function handleAddCardSubmit(e, inputs) {
-  renderCard({ name: inputs[0], link: inputs[1] });
+  renderCard({ name: inputs["title"], link: inputs["description"] });
   e.target.reset();
   addCardFormValidator.toggleButtonState();
   cardAddModal.close();
