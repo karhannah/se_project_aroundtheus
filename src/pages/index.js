@@ -7,6 +7,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constants from "../utils/constants.js";
+import Api from "../components/API.js"
 
 const section = new Section ({items:constants.initialCards, renderer: addCard}, ".gallery__cards");
 const cardTemplate = document
@@ -36,6 +37,8 @@ previewImagePopup.setEventListeners();
 
 const addCardFormValidator = new FormValidator(constants.settings, cardForm);
 const profileFormValidator = new FormValidator(constants.settings, profileModalForm);
+
+const api = new Api("c56e30dc-2883-4270-a59e-b2f7bae969c6", "https://around-api.en.tripleten-services.com/v1/cards");
 
 // Enable form validation
 
@@ -81,4 +84,4 @@ profileEditButton.addEventListener("click", () => {
 
 addNewCardButton.addEventListener("click", () => cardAddModal.open());
 
-
+//api.test();
