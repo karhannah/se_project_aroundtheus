@@ -8,28 +8,59 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import * as constants from "../utils/constants.js";
 import Api from "../components/API.js"
+import PopupConfirmation from "../components/PopupConfirmation.js";
 
-const section = new Section ({items:constants.initialCards, renderer: addCard}, ".gallery__cards");
-const cardTemplate = document
-    .querySelector("#card-template")
-    .content.querySelector(".card");
+const api = new Api("b73a4638-eb7a-419c-8b34-f34f4d770b05", "https://around-api.en.tripleten-services.com/v1/cards");
 
-  const profileInfo = new UserInfo({nameSelector: "#profile__title", jobSelector: "#profile__description"});
+const section = new Section ({renderer: addCard}, ".gallery__cards");
 
-  const cardListEl = document.querySelector(".gallery__cards");
-  const addNewCardButton = document.querySelector("#profile__add-button");
-  const profileTitle = document.querySelector("#profile__title");
-  const profileDescription = document.querySelector("#profile__description");
-  const profileTitleInput = document.querySelector("#modal__title");
-  const profileDescriptionInput = document.querySelector("#modal__description");
-  const profileEditButton = document.querySelector("#profile__edit-button");
-  const profileModalForm = document.querySelector("#profile-form");
-  const cardForm = document.querySelector("#add-form");
+api.getInitialCards()
+    .then((result) => {
+      result.forEach((card) => {
+        section.addItem({name: card.name, link: card.link, id: card._id, isLiked: card.isLiked});
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-const profileFormModal = new PopupWithForm({popupSelector:"#profileEditModal", handleFormSubmit:handleProfileEditSubmit});
+const profileInfo = new UserInfo({nameSelector: "#profile__title", jobSelector: "#profile__description"});
+
+api.getUserInfo()
+.then((result) => {
+  profileInfo.setUserInfo({name: result.name, job: result.about});
+  document.getElementById("profile__image").setAttribute("src", result.avatar);
+})
+.catch((err) => {
+  console.log(err);
+})
+
+
+const addNewCardButton = document.querySelector("#profile__add-button");
+const profileTitleInput = document.querySelector("#modal__title");
+const profileDescriptionInput = document.querySelector("#modal__description");
+const profileEditButton = document.querySelector("#profile__edit-button");
+const profileModalForm = document.querySelector("#profile-form");
+const cardForm = document.querySelector("#add-form");
+
+const confirmModal = new PopupConfirmation("#confirmationModal");
+confirmModal.setEventListeners();
+
+const profileFormModal = new PopupWithForm({popupSelector:"#profileEditModal",
+                                            handleFormSubmit:handleProfileEditSubmit,
+                                            confirmModal: confirmModal});
 profileFormModal.setEventListeners();
 
-const cardAddModal = new PopupWithForm ({popupSelector:"#cardModal", handleFormSubmit:handleAddCardSubmit});
+const profileImageModal = new PopupWithForm({popupSelector: "#profileImageModal",
+                                             handleFormSubmit: handleProfileImageSubmit,
+                                             confirmModal: confirmModal});
+profileImageModal.setEventListeners();
+
+document.querySelector(".profile__image__overlay").addEventListener("click", () => { profileImageModal.open(); });
+
+const cardAddModal = new PopupWithForm ({popupSelector:"#cardModal",
+                                         handleFormSubmit:handleAddCardSubmit,
+                                         confirmModal: confirmModal});
 cardAddModal.setEventListeners();
 
 const previewImagePopup = new PopupWithImage("#previewImageModal");
@@ -37,8 +68,6 @@ previewImagePopup.setEventListeners();
 
 const addCardFormValidator = new FormValidator(constants.settings, cardForm);
 const profileFormValidator = new FormValidator(constants.settings, profileModalForm);
-
-const api = new Api("c56e30dc-2883-4270-a59e-b2f7bae969c6", "https://around-api.en.tripleten-services.com/v1/cards");
 
 // Enable form validation
 
@@ -48,7 +77,7 @@ profileFormValidator.enableValidation();
 
 function addCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  return card.getView();
+  return {view: card.getView(), card: card};
 }
 
 // Render card function using Card class
@@ -64,11 +93,33 @@ function handleImageClick(cardInstance) {
 //
 function handleProfileEditSubmit(e, inputs) {
   profileInfo.setUserInfo({name:inputs["title"], job:inputs ["description"]});
+  api.updateProfileInfo({title: inputs["title"], job: inputs ["description"]})
+    .then((result) => {
+      //console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   profileFormModal.close();
 }
 
+function handleProfileImageSubmit(e, inputs) {
+  api.updateProfileIcon(inputs["link"])
+  .then((result) => {
+    //console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  console.log(document.getElementById("profile__image"));
+  document.getElementById("profile__image").setAttribute("src", inputs["link"]);
+  profileImageModal.close();
+}
+
 function handleAddCardSubmit(e, inputs) {
-  renderCard({ name: inputs["title"], link: inputs["description"] });
+  api.postNewCard(inputs["title"], inputs["description"]).then((res) => {
+    renderCard({ name: inputs["title"], link: inputs["description"], id: res._id, isLiked: res.isLiked });
+  });
   e.target.reset();
   addCardFormValidator.toggleButtonState();
   cardAddModal.close();
@@ -83,5 +134,3 @@ profileEditButton.addEventListener("click", () => {
 });
 
 addNewCardButton.addEventListener("click", () => cardAddModal.open());
-
-//api.test();
