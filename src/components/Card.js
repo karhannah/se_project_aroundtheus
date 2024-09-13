@@ -1,15 +1,19 @@
-import Api from "../components/API.js"
+import Api from "../components/API.js";
 
-const api = new Api("b73a4638-eb7a-419c-8b34-f34f4d770b05", "https://around-api.en.tripleten-services.com/v1/cards");
+const api = new Api(
+  "b73a4638-eb7a-419c-8b34-f34f4d770b05",
+  "https://around-api.en.tripleten-services.com/v1/cards"
+);
 
 export default class Card {
-  constructor(cardObject, cardSelector, handleImageClick) {
+  constructor(cardObject, cardSelector, handleImageClick, confirmModal) {
     this.name = cardObject.name;
     this.link = cardObject.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._id = cardObject.id;
     this._isLiked = cardObject.isLiked;
+    this._confirmModal = confirmModal;
   }
 
   getTemplate() {
@@ -25,7 +29,10 @@ export default class Card {
       this._handleLikeIcon();
     });
     this._deleteButton.addEventListener("click", () => {
-      this._handleDeleteCard();
+      this._confirmModal.open(() => {
+        this._handleDeleteCard();
+      });
+      // this._handleDeleteCard();
     });
     this._cardImageElement.addEventListener("click", () => {
       this._handleImageClick(this);
@@ -48,7 +55,7 @@ export default class Card {
   }
 
   _handleDeleteCard() {
-    api.deleteCard(this._id).then(res => {
+    api.deleteCard(this._id).then((res) => {
       //console.log(res);
     });
     this._cardElement.remove();
