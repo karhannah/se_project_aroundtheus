@@ -30,7 +30,16 @@
             src="<%=require('./src/images/jacques-cousteau.jpg')%>"
             alt="Profile Picture"
             class="profile__image"
+            id = "profile__image"
           />
+          <div class = "profile__image__overlay__wrapper">
+            <img
+              src = "<%=require('./src/images/Edit No Border.png')%>"
+              alt = "Edit Profile Picture"
+              class = "profile__image__overlay"
+              id = "profile__image__overlay"
+            />
+          </div>
           <div class="profile__info">
             <h1 id="profile__title" class="profile__title">Jacques Cousteau</h1>
             <button
@@ -147,7 +156,52 @@
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption" id="modal__caption"></p>
       </div>
-
+    </div>
+      <!-- NEW MODAL -->
+      <div class="modal" id="confirmationModal">
+        <div class="modal__container">
+          <button
+            class="modal__close"
+            id="confirmation-modal-close"
+            type="button"
+            aria-label
+          ></button>
+          <p class="modal__heading">Are You Sure?</p>
+          <form class="modal__form" id="confirmation-form">
+            <button class="modal__button modal__button_disabled" id="confirmation-modal-submit" type="submit">Yes</button>
+          </form>
+        </div>
+      </div>
+      <!-- NEW MODAL -->
+      <div class="modal" id="profileImageModal">
+        <div class="modal__container">
+          <button
+            class="modal__close"
+            id="profile-image-modal-close"
+            type="button"
+            aria-label
+          ></button>
+          <p class="modal__heading">Change Profile Picture</p>
+          <form class="modal__form" id="change-picture-form">
+            <label class="modal__error-wrapper">
+              <input
+                class="modal__input"
+                type="text"
+                name="link"
+                id="modal__change-picture"
+                placeholder="Image Link"
+                required
+                maxlength="30000"
+                minlength="1"
+              />
+              <span class="modal__error" id="modal__change-picture-error"></span>
+            </label>
+          <form class="modal__form" id="change-picture-form">
+          <button class="modal__button modal__button_disabled" id="change-picture-modal-submit" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+       <!-- NEW MODAL -->
     <template id="card-template">
       <li class="card">
         <img class="card__image" src="" alt="" />

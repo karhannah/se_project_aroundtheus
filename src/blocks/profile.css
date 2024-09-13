@@ -26,6 +26,32 @@
   height: 120px;
 }
 
+.profile__image:hover {
+  opacity:0.6;
+  cursor:pointer;
+}
+
+.profile__image__overlay {
+  opacity:1;
+  width: 26px;
+  height: 26px;
+  left: 48px;
+  top: 48px;
+  position: absolute;
+}
+
+.profile__image__overlay__wrapper {
+  opacity: 0;
+  min-width: 120px;
+  min-height: 120px;
+  position: absolute;
+}
+
+.profile__image__overlay__wrapper:hover {
+  opacity: 0.6;
+  background-color: black;
+}
+
 .profile__title {
   margin: 0;
   color: #fff;
