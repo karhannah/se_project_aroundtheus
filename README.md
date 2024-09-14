@@ -29,3 +29,7 @@ Good luck and have fun!
 - [Link to the project on GitHub](https://github.com/karhannah/se_project_aroundtheus) -[Link to Github Pages](https://karhannah.github.io/se_project_aroundtheus/index.html)
 
 3/18/2024
+
+**Project Demo**
+- [Link to Youtube Demo](https://youtu.be/1i80ccpiLpk)
+- 9/14/2024
